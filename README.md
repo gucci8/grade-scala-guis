@@ -8,3 +8,4 @@ In addition, following convenience scripts are provided in path.
 
     If classpath is omitted every JAR file in
     /usr/local/java/lib and /usr/local/scala/lib is included.
+
