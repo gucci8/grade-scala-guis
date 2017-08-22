@@ -10,7 +10,7 @@ RUN mkdir -p $SCALA_DIR && cd $SCALA_DIR \
   && update-alternatives --install "/usr/bin/scalac" "scalac" "$SCALA_DIR/$SCALA_VER/bin/scalac" 1 \
   && update-alternatives --install "/usr/bin/fsc" "fsc" "$SCALA_DIR/$SCALA_VER/bin/fsc" 1
 
-ADD aplus /aplus
+ADD bin /usr/local/bin
 
 RUN mkdir -p $SCALA_DIR/lib && cd $SCALA_DIR/lib \
   && curl -LsO https://oss.sonatype.org/content/groups/public/org/scalatest/scalatest_2.12/3.0.1/scalatest_2.12-3.0.1.jar \
