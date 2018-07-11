@@ -1,14 +1,18 @@
 FROM apluslms/grading-java:1.8
 
-ARG SCALA_URL=https://downloads.lightbend.com/scala/2.12.2/scala-2.12.2.tgz
+ARG SCALA_VER=2.12
+ARG SCALA_FVER=2.12.6
+ARG SCALA_URL=https://downloads.lightbend.com/scala/$SCALA_FVER/scala-$SCALA_FVER.tgz
 ARG SCALA_DIR=/usr/local/scala
-ARG SCALA_VER=scala-2.12.2
+ENV SCALA_HOME=$SCALA_DIR/scala-$SCALA_FVER
 
 RUN mkdir -p $SCALA_DIR && cd $SCALA_DIR \
-  && (curl -Ls $SCALA_URL | tar zx) \
-  && update-alternatives --install "/usr/bin/scala" "scala" "$SCALA_DIR/$SCALA_VER/bin/scala" 1 \
-  && update-alternatives --install "/usr/bin/scalac" "scalac" "$SCALA_DIR/$SCALA_VER/bin/scalac" 1 \
-  && update-alternatives --install "/usr/bin/fsc" "fsc" "$SCALA_DIR/$SCALA_VER/bin/fsc" 1
+\
+ # Download scala
+ && (curl -Ls $SCALA_URL | tar zx) \
+ && update-alternatives --install "/usr/bin/scala" "scala" "$SCALA_HOME/bin/scala" 1 \
+ && update-alternatives --install "/usr/bin/scalac" "scalac" "$SCALA_HOME/bin/scalac" 1 \
+ && update-alternatives --install "/usr/bin/fsc" "fsc" "$SCALA_HOME/bin/fsc" 1
 
 ADD bin /usr/local/bin
 
