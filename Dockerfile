@@ -27,3 +27,5 @@ RUN mkdir -p $SCALA_DIR && cd $SCALA_DIR \
 
 # Add scala utilities
 ADD bin /usr/local/bin
+
+ENV CLASSPATH=.:/exercise:/exercise/*:/exercise/lib/*:$SCALA_DIR/lib/*:$SCALA_HOME/*:$JAVA_DIR/lib/*:$JAVA_HOME/lib/*:$JAVA_HOME/jre/lib/*
