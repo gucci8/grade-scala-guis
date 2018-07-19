@@ -1,0 +1,26 @@
+---
+title: Scala sbt example
+description: An example of using sbt for scala grading
+instructions: |
+    <h4>The problem</h4>
+    <p>
+        Write class <code>example.Hello</code> that has one method <code>hello</code>.
+        Use method <code>print</code> from <code>Output</code> trait.
+        Your method should print string <samp>Hello there!</samp>.
+    </p>
+
+view_type: access.types.stdasync.acceptFiles
+files:
+  - field: file1
+    name: Hello.scala
+
+itemplate_files:
+  - hello-sbt/Hello_template.scala
+
+model_files:
+  - hello-sbt/Hello.scala
+
+container:
+  image: apluslms/grade-scala:sbt
+  mount: hello-sbt/en
+  cmd: /exercise/run.sh

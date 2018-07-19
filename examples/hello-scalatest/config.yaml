@@ -1,0 +1,27 @@
+---
+title: Scala scalatest example
+description: An example of using scalatest with run-all-scalatests utility
+instructions: |
+    <h4>The problem</h4>
+    <p>
+        Write class <code>example.Hello</code> that has one method <code>hello</code>.
+        Use method <code>print</code> from <code>Output</code> trait.
+        Your method should print string <samp>Hello there!</samp>.
+    </p>
+
+view_type: access.types.stdasync.acceptFiles
+files:
+  - field: file1
+    name: Hello.scala
+
+itemplate_files:
+  - hello-scalatest/Hello_template.scala
+
+model_files:
+  - hello-scalatest/Hello.scala
+
+container:
+  image: apluslms/grade-scala
+  mount: hello-scalatest/en
+  cmd: run-all-scalatests
+  #cmd: /exercise/run.sh
