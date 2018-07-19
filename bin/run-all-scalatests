@@ -1,0 +1,30 @@
+#!/bin/sh
+
+points=1
+compile="yes"
+ok=0
+while [ "$1" ]; do
+    case "$1" in
+        -p) points=$2 ; shift 2 ;;
+        -C) compile="no" ; shift ;;
+        --) shift ; break ;;
+        -*)
+            echo "ERROR: Invalid option '$1' for $0" >&2
+            echo "usage: $0 [-C] [-p points_per_test_class]" >&2
+            exit 64
+            ;;
+        *) break ;;
+    esac
+done
+
+if [ "$compile" = "yes" ]; then
+    testcase -t "Compile" scala-compile ./ /exercise
+    ok=$?
+fi
+
+find . -iname '*Test*.scala'|while read file; do
+    if ! grep -qsF 'org.scalatest.' "$file"; then continue; fi
+    file=${file#./}
+    class=$(echo "${file%.scala}" | tr '/' '.')
+    testcase -t "${class##*.}" -p 1 -s $ok -- scalatest "$class"
+done
