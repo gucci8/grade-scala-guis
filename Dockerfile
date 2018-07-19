@@ -1,4 +1,5 @@
-FROM apluslms/grading-java:1.8
+ARG BASE_TAG=latest
+FROM apluslms/grade-java:$BASE_TAG
 
 ARG SCALA_VER=2.12
 ARG SCALA_FVER=2.12.6
