@@ -14,7 +14,7 @@ files:
   - field: file1
     name: Hello.scala
 
-itemplate_files:
+template_files:
   - hello-scalatest/Hello_template.scala
 
 model_files:
