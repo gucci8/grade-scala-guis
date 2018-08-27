@@ -1,16 +1,14 @@
 #!/bin/sh
 
-CACHE_TAG=${CACHE_TAG:-$DOCKER_TAG}
-
 java_ver=1.8
 
-if [ "${CACHE_TAG#*-}" = "${CACHE_TAG}" ]; then
-    base=${CACHE_TAG}
+if [ "${DOCKER_TAG#*-}" = "${DOCKER_TAG}" ]; then
+    base=${DOCKER_TAG}
     main=
     full=$base
 else
-    main=$(echo "${CACHE_TAG}"|cut -d- -f1)
-    base=$(echo "${CACHE_TAG}"|cut -d- -f2)
+    main=$(echo "${DOCKER_TAG}"|cut -d- -f1)
+    base=$(echo "${DOCKER_TAG}"|cut -d- -f2)
     full=$main-$base
     if [ "${base#*u}" ]; then
         base=${base%%u*}
