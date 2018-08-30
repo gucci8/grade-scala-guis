@@ -26,6 +26,6 @@ RUN mkdir -p $SCALA_DIR && cd $SCALA_DIR \
  && download_verify -a -s -as https://search.maven.org/remotecontent?filepath=org/scalamock/scalamock_$SCALA_VER/$MOCK_VER/scalamock_$SCALA_VER-$MOCK_VER.jar
 
 # Add scala utilities
-ADD bin /usr/local/bin
+COPY bin /usr/local/bin
 
 ENV CLASSPATH=.:/exercise:/exercise/*:/exercise/lib/*:$SCALA_DIR/lib/*:$SCALA_HOME/*:$JAVA_DIR/lib/*:$JAVA_HOME/lib/*:$JAVA_HOME/jre/lib/*
