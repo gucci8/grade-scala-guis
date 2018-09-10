@@ -8,13 +8,10 @@ ARG CONFIG_VER=1.3.0-M1
 ARG AKKA_VER=2.5.3
 ARG COMBINATORS_VER=1.0.5
 ARG SWING_VER=2.0.0
-ARG SMCL_VER=0.0.9
 
 RUN cd $SCALA_LIB \
  && gpg_recv C550938A54246AD3 2B183B279DFD639E 7090AF43A5E10D0B 5AEF559294426F19 \
  && download_verify -a -s -as http://central.maven.org/maven2/com/typesafe/config/$CONFIG_VER/config-$CONFIG_VER.jar \
  && download_verify -a -s -as http://central.maven.org/maven2/com/typesafe/akka/akka-actor_$SCALA_VER/$AKKA_VER/akka-actor_$SCALA_VER-$AKKA_VER.jar \
  && download_verify -a -s -as http://central.maven.org/maven2/org/scala-lang/modules/scala-parser-combinators_$SCALA_VER/$COMBINATORS_VER/scala-parser-combinators_$SCALA_VER-$COMBINATORS_VER.jar \
- && download_verify -a -s -as http://central.maven.org/maven2/org/scala-lang/modules/scala-swing_$SCALA_VER/$SWING_VER/scala-swing_$SCALA_VER-$SWING_VER.jar \
- && download_verify https://github.com/Aalto-LeTech/Scala-Media-Computation/releases/download/v$SMCL_VER/smcl-core_$SCALA_VER.jar
-
+ && download_verify -a -s -as http://central.maven.org/maven2/org/scala-lang/modules/scala-swing_$SCALA_VER/$SWING_VER/scala-swing_$SCALA_VER-$SWING_VER.jar
