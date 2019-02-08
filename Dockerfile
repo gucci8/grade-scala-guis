@@ -2,7 +2,7 @@ ARG BASE_TAG=latest
 FROM apluslms/grade-java:$BASE_TAG
 
 ARG SCALA_VER=2.12
-ARG SCALA_FVER=2.12.6
+ARG SCALA_FVER=2.12.8
 ARG SCALA_URL=https://downloads.lightbend.com/scala/$SCALA_FVER/scala-$SCALA_FVER.tgz
 ARG SCALA_DIR=/usr/local/scala
 ENV SCALA_HOME=$SCALA_DIR/scala-$SCALA_FVER
