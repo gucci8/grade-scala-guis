@@ -45,3 +45,7 @@ RUN mkdir -p $SCALA_HOME && cd $SCALA_HOME  \
 COPY bin /usr/local/bin
 
 ENV CLASSPATH=.:/exercise:/exercise/*:/exercise/lib/*:$SCALA_DIR/lib/*:/usr/local/java/lib/*
+
+COPY --from=temp:latest /tmp/scalac-native/scalac /usr/local/lib/scalac-native
+COPY --from=temp:latest /usr/local/graalvm/jre/lib/rt.jar /usr/local/lib/graalvm_rt.jar
+COPY scalac-native /usr/local/bin

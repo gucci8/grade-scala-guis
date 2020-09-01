@@ -26,7 +26,8 @@ move-to-package-dirs -d '\n' -f '*.scala' -- "$@" | (
         exit 1
     fi
 
-    scalac -d . $SCALACFLAGS "$@"
+    set -x
+    "${SCALAC:-scalac}" -d . $SCALACFLAGS "$@"
     RES=$?
     [ $RES -eq 0 -a "$ok_message" ] && echo "$ok_message"
     exit $RES
