@@ -45,3 +45,8 @@ RUN mkdir -p $SCALA_HOME && cd $SCALA_HOME  \
 COPY bin /usr/local/bin
 
 ENV CLASSPATH=.:/exercise:/exercise/*:/exercise/lib/*:$SCALA_DIR/lib/*:/usr/local/java/lib/*
+
+# Install Python for running grading scripts.
+RUN apt_install \
+    python3 \
+ && :
