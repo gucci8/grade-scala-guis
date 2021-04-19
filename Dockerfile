@@ -2,7 +2,7 @@ ARG BASE_TAG=latest
 FROM apluslms/grade-java:$BASE_TAG
 
 ARG SCALA_VER=2.13
-ARG SCALA_FVER=2.13.1
+ARG SCALA_FVER=2.13.5
 ARG SCALA_URL=https://downloads.lightbend.com/scala/$SCALA_FVER/scala-$SCALA_FVER.tgz
 ARG SCALA_DIR=/usr/local/scala
 ENV SCALA_HOME=$SCALA_DIR/scala-$SCALA_FVER
@@ -35,10 +35,10 @@ RUN mkdir -p $SCALA_HOME && cd $SCALA_HOME  \
     # extra libs
     org.scala-lang.modules scala-swing_$SCALA_VER 2.1.1 \
     # for grading
-    org.scalatest scalatest_$SCALA_VER 3.1.1 "default->master,compile,runtime" \
-    org.scalamock scalamock_$SCALA_VER [4.3.0,4.4[ \
-    com.beautiful-scala scalastyle_$SCALA_VER [1.4.0,1.5[ \
-    com.typesafe.akka akka-actor_$SCALA_VER [2.6.1,2.7[ \
+    org.scalatest scalatest_$SCALA_VER 3.2.5 "default->master,compile,runtime" \
+    org.scalamock scalamock_$SCALA_VER 5.1.0 \
+    com.beautiful-scala scalastyle_$SCALA_VER [1.5.0,1.6[ \
+    com.typesafe.akka akka-actor_$SCALA_VER [2.6.14,2.7[ \
  && :
 
 # Add scala utilities
