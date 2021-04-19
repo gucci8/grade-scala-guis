@@ -8,8 +8,9 @@ if [ "${DOCKER_TAG#*-}" = "${DOCKER_TAG}" ]; then
     full=$base
 else
     main=$(echo "${DOCKER_TAG}"|cut -d- -f1)
-    base=$(echo "${DOCKER_TAG}"|cut -d- -f2)
-    full=$main-$base
+    python=$(echo "${DOCKER_TAG}"|cut -d- -f2)
+    base=$(echo "${DOCKER_TAG}"|cut -d- -f3)
+    full=$main-$python-$base
     if [ "${base#*u}" ]; then
         base=${base%%u*}
     fi
