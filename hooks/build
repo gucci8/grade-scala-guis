@@ -7,8 +7,8 @@ if [ "${DOCKER_TAG#*-}" = "${DOCKER_TAG}" ]; then
     main=
     full=$base
 else
-    main=$(echo "${DOCKER_TAG}"|cut -d- -f1)
-    base=$(echo "${DOCKER_TAG}"|cut -d- -f2)
+    main=${DOCKER_TAG%%-*}
+    base=${DOCKER_TAG##*-}
     full=$main-$base
     if [ "${base#*u}" ]; then
         base=${base%%u*}
@@ -16,8 +16,15 @@ else
     base="$java_ver-$base"
 fi
 
+if [ "$full" != "latest" ]; then
+    echo "############################################################"
+    echo "### pulling latest image, so layer cache is update."
+    docker pull $DOCKER_REPO:latest || true
+    echo "############################################################"
+fi
+
 : > tags.txt
-for layer in ""; do
+for layer in "" "python" "scala3"; do
     if [ "$layer" ]; then
         tag="$layer-$full"
         file="Dockerfile.$layer"

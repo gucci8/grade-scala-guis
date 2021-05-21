@@ -4,3 +4,4 @@ while read tag; do
     echo "### Pushing $DOCKER_REPO:$tag"
     docker push $DOCKER_REPO:$tag
 done < tags.txt
+rm -f tags.txt

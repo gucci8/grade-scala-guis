@@ -1,0 +1,6 @@
+ARG FULL_TAG=latest
+FROM apluslms/grade-scala:$FULL_TAG
+
+RUN apt_install \
+    python3 \
+ && :
