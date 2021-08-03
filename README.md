@@ -1,6 +1,6 @@
-# Grade-scala
+# Grade-scala-guis
 
-Grading environment with specific Scala version in path.
+Grading environment with specific Scala version and headless testing for GUIs in path.
 
 This image extends [grade-java](https://github.com/apluslms/grade-java).
 
