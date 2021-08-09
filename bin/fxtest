@@ -1,0 +1,21 @@
+#!/bin/sh -eu
+
+defrunner="org.scalatest.junit.JUnitRunner"
+runner=$defrunner
+while [ $# -gt 0 ]; do
+    case "$1" in
+        -r) runner=$2 ;;
+        --) shift ; break ;;
+        -*) echo "ERROR: Invalid option '$1' for $0" >&2 ; exit 64 ;;
+        *) break ;;
+    esac
+    shift 2
+done
+
+if [ "$#" -eq 1 -a "$runner" = "$defrunner" ]; then
+    set -- -s "$1"
+fi
+if [ "$runner" = "$defrunner" ]; then
+    set -- -R . -eW "$@"
+fi
+exec scala "$runner" "$@"
