@@ -1,0 +1,4 @@
+#!/bin/sh -eu
+
+cd /exercise
+sbt clean compile test
